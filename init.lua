@@ -1,0 +1,27 @@
+local set = vim.opt
+
+set.clipboard = "unnamedplus"
+set.number = true
+set.relativenumber = true
+set.mouse = "a"
+set.autoindent = true
+set.cursorline = true
+set.expandtab = true
+set.shiftwidth = 2
+set.tabstop = 2
+set.encoding = "UTF-8"
+set.ruler = true
+set.showmatch = true
+set.splitright = true
+set.splitbelow = true
+set.termguicolors = true
+set.showcmd = true
+set.wildmenu = true
+set.wildoptions = "pum"
+
+require("setup")
+
+vim.cmd([[
+syntax on
+filetype plugin indent on
+]])
