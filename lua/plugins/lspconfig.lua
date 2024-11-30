@@ -20,34 +20,9 @@ return {
       })
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      local servers = {
-        clangd = {},
-        gopls = {},
-        pyright = {},
-        ts_ls = {
-          filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript" },
-        },
-        intelephense = {
-          settings = {
-            intelephense = {
-              files = {
-                maxSize = 5000000, -- Aumenta o limite de tamanho de arquivos
-              },
-            },
-          },
-          root_dir = lspconfig.util.root_pattern("compose.json", ".git/", "*.php"),
-        },
-        html = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-      }
+      local servers = require("lspservers")
+      servers.intelephense.root_dir = lspconfig.util.root_pattern("compose.json", ".git/", "*.php")
+
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua",
