@@ -16,14 +16,15 @@ set.ruler = true
 set.showmatch = true
 set.splitright = true
 set.splitbelow = true
-set.termguicolors = true
 set.showcmd = true
 set.wildmenu = true
 set.wildoptions = "pum"
+set.termguicolors = true
 
 require("setup")
 
 vim.cmd([[
 syntax on
 filetype plugin indent on
+colorscheme lackluster-hack
 ]])
