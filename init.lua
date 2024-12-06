@@ -1,8 +1,9 @@
+require("setup")
 local set = vim.opt
 
 set.clipboard = "unnamedplus"
 set.number = true
-set.relativenumber = true
+
 set.mouse = "a"
 set.autoindent = true
 set.smartindent = true
@@ -20,11 +21,12 @@ set.showcmd = true
 set.wildmenu = true
 set.wildoptions = "pum"
 set.termguicolors = true
+set.background = "dark"
 
-require("setup")
-
+vim.loader.enable()
 vim.cmd([[
 syntax on
 filetype plugin indent on
 colorscheme lackluster-hack
 ]])
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

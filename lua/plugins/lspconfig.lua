@@ -28,13 +28,18 @@ return {
         "stylua",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
+      local navic = require("nvim-navic")
       require("mason-lspconfig").setup({
         automatic_intallation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            server.on_attach = function(client, buffer)
+              if client.server_capabilities.documentSymbolProvider then
+                navic.attach(client, buffer)
+              end
+            end
             lspconfig[server_name].setup(server)
           end,
         },
