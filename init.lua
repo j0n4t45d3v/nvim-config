@@ -2,6 +2,7 @@ require("setup")
 local set = vim.opt
 
 set.clipboard = "unnamedplus"
+set.relativenumber = true
 set.number = true
 
 set.mouse = "a"
@@ -22,6 +23,7 @@ set.wildmenu = true
 set.wildoptions = "pum"
 set.termguicolors = true
 set.background = "dark"
+set.colorcolumn = "80"
 
 vim.loader.enable()
 vim.cmd([[

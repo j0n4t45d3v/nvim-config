@@ -23,4 +23,17 @@ key.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" }
 key.set("n", "<leader>fc", telescope.colorscheme, { desc = "List colorschemes" })
 -- FORMAT
 key.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
-key.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Teste" })
+key.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
+
+-- Mapear no modo normal
+key.set("n", "<leader>Co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { noremap = true, silent = true, desc = "Organize Imports"})
+key.set("n", "<leader>Cv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { noremap = true, silent = true, desc = "Extract Variable"})
+key.set("n", "<leader>Cc", "<Cmd>lua require('jdtls').extract_constant()<CR>", { noremap = true, silent = true, desc = "Extract Constant"})
+key.set("n", "<leader>Ct", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", { noremap = true, silent = true, desc = "Test Method" })
+key.set("n", "<leader>CT", "<Cmd>lua require'jdtls'.test_class()<CR>", { noremap = true, silent = true, desc = "Test Class" })
+key.set("n", "<leader>Cu", "<Cmd>JdtUpdateConfig<CR>", { noremap = true, silent = true , desc = "Update Config"})
+
+-- Mapear no modo visual
+key.set("v", "<leader>Cv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", { noremap = true, silent = true, desc = "Extract Variable"})
+key.set("v", "<leader>Cc", "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", { noremap = true, silent = true, desc = "Extract Constant" })
+key.set("v", "<leader>Cm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { noremap = true, silent = true, desc = "Extract Method"})
