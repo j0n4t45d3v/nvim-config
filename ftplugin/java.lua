@@ -117,27 +117,75 @@ config["on_attach"] = function(client, bufnr)
     config_overrides = {},
   })
   local function on_attach(client, bufnr)
-    print("LSP attached for Java")
-    vim.api.nvim_buf_set_keymap(
-      bufnr,
+    require("notify").notify("LSP attached for Java", "info", { title = "Jtdls" })
+
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, bufnr)
+    end
+    -- Helper para facilitar os mapeamentos
+    local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+    buf_set_keymap(
       "n",
       "gd",
-      "<Cmd>lua vim.lsp.buf.definition()<CR>",
-      { noremap = true, silent = true }
+      "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",
+      { noremap = true, silent = true, desc = "Go to definition" }
+    )
+
+    -- Go-to declaração
+    buf_set_keymap(
+      "n",
+      "gD",
+      "<cmd>lua vim.lsp.buf.declaration()<CR>",
+      { noremap = true, silent = true, desc = "Go to declaration" }
+    )
+
+    -- Go-to implementação
+    buf_set_keymap(
+      "n",
+      "gi",
+      "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>",
+      { noremap = true, silent = true, desc = "Go to implementation" }
+    )
+
+    -- Go-to tipo
+    buf_set_keymap(
+      "n",
+      "gt",
+      "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>",
+      { noremap = true, silent = true, desc = "Go to type definition" }
+    )
+
+    buf_set_keymap(
+      "n",
+      "<leader>lr",
+      "<cmd>lua vim.lsp.buf.rename()<CR>",
+      { noremap = true, silent = true, desc = "Rename" }
+    )
+    -- Mostrar referências
+    buf_set_keymap(
+      "n",
+      "gr",
+      "<cmd>lua require('telescope.builtin').lsp_references()<CR>",
+      { noremap = true, silent = true, desc = "Show references" }
+    )
+
+    -- Hover (ajuda)
+    buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true, desc = "Helper" })
+
+    -- Exibir assinatura (documentação inline)
+    buf_set_keymap(
+      "n",
+      "<C-k>",
+      "<cmd>lua vim.lsp.buf.signature_help()<CR>",
+      { noremap = true, silent = true, desc = "Show signature help" }
     )
   end
 
-  local lspconfig = require("lspconfig")
-  lspconfig.jdtls.setup({
-    on_attach = on_attach,
-  })
   local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
   if status_ok then
     jdtls_dap.setup_dap_main_class_configs()
-  end
-
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
   end
 end
 
