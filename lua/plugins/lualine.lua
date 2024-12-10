@@ -9,20 +9,33 @@ return {
         theme = "lackluster",
       },
       sections = {
-        lualine_c = {
-          { navic.get_location, cond = navic.is_available },
-        },
-      },
-      winbar = {
-        lualine_c = {
+        lualine_x = {
+          {
+            "lsp_progress",                             -- Exibe o progresso de LSP
+            display_components = { "spinner", "percentage" }, -- Customize a exibição
+            always_visible = true,
+          },
           {
             function()
-              return navic.get_location()
+              local clients = vim.lsp.get_active_clients()
+              if #clients > 0 then
+                return "["
+                    .. table.concat(
+                      vim.tbl_map(function(client)
+                        return client.name
+                      end, clients),
+                      ", "
+                    )
+                    .. "]"
+              else
+                return "No LSP"
+              end
             end,
-            cond = function()
-              return navic.is_available()
-            end,
+            icon = " LSP:",
+            color = { fg = "#cfcfcf", gui = "bold" }, -- Customize a cor
           },
+          "filetype",
+          "encoding",
         },
       },
     })

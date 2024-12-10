@@ -30,7 +30,7 @@ return {
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       local navic = require("nvim-navic")
       require("mason-lspconfig").setup({
-        ensure_installed = {},
+        ensure_installed = { "jdtls" },
         automatic_installation = true,
         handlers = {
           function(server_name)

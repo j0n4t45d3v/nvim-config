@@ -31,4 +31,3 @@ syntax on
 filetype plugin indent on
 colorscheme lackluster-hack
 ]])
--- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
