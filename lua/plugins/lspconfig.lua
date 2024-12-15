@@ -104,12 +104,14 @@ return {
               -- Exibir assinatura (documentação inline)
               buf_set_keymap(
                 "n",
-                "<C-k>",
+                "<leader>sh",
                 "<cmd>lua vim.lsp.buf.signature_help()<CR>",
                 { noremap = true, silent = true, desc = "Show signature help" }
               )
             end
-            lspconfig[server_name].setup(server)
+            if server_name ~= 'jdtls' then
+              lspconfig[server_name].setup(server)
+            end
           end,
         },
       })
