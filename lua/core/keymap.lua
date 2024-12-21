@@ -24,8 +24,14 @@ key.set("n", "<leader>sq", "<C-w>q", opt("Switch for down window"))
 key.set("n", "<leader>sv", "<C-w>v", opt("Split vertical window"))
 key.set("n", "<leader>ss", "<C-w>s", opt("Split horizontal window"))
 
+key.set("n", "<C-left>", "<C-w><", opt("Decrement width window"))
+key.set("n", "<C-right>", "<C-w>>", opt("Increment width windows"))
+key.set("n", "<C-up>", "<C-w>+", opt("Increment height window"))
+key.set("n", "<C-dowm>", "<C-w>-", opt("Decrement height window"))
+
 -- NVIM TREE
-key.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open/Close explore", noremap = true, silent = true })
+key.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { desc = "Open/Close explore", noremap = true, silent = true })
+key.set("n", "<leader>ef", ":NvimTreeFocus<CR>", { desc = "Open explore focus file", noremap = true, silent = true })
 
 -- TELESCOPE
 local telescope = require("telescope.builtin")
@@ -43,35 +49,35 @@ key.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
 -- Mapear no modo normal
 key.set(
   "n",
-  "<leader>Co",
+  "<leader>Jo",
   "<Cmd>lua require'jdtls'.organize_imports()<CR>",
   { noremap = true, silent = true, desc = "Organize Imports" }
 )
 key.set(
   "n",
-  "<leader>Cv",
+  "<leader>Jv",
   "<Cmd>lua require('jdtls').extract_variable()<CR>",
   { noremap = true, silent = true, desc = "Extract Variable" }
 )
 key.set(
   "n",
-  "<leader>Cc",
+  "<leader>JC",
   "<Cmd>lua require('jdtls').extract_constant()<CR>",
   { noremap = true, silent = true, desc = "Extract Constant" }
 )
 key.set(
   "n",
-  "<leader>Ct",
+  "<leader>Jt",
   "<Cmd>lua require'jdtls'.test_nearest_method()<CR>",
   { noremap = true, silent = true, desc = "Test Method" }
 )
 key.set(
   "n",
-  "<leader>CT",
+  "<leader>JT",
   "<Cmd>lua require'jdtls'.test_class()<CR>",
   { noremap = true, silent = true, desc = "Test Class" }
 )
-key.set("n", "<leader>Cu", "<Cmd>JdtUpdateConfig<CR>", { noremap = true, silent = true, desc = "Update Config" })
+key.set("n", "<leader>Ju", "<Cmd>JdtUpdateConfig<CR>", { noremap = true, silent = true, desc = "Update Config" })
 
 -- Mapear no modo visual
 key.set(
@@ -103,7 +109,7 @@ key.set("n", "<leader>tf", function()
 end, opt("Run Tests In File"))
 
 key.set("n", "<leader>tp", function()
-  require('neotest').run.run(vim.loop.cwd()) 
+  require("neotest").run.run(vim.loop.cwd())
 end, opt("Run Test in project"))
 
 key.set("n", "<leader>tf", function()

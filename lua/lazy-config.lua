@@ -1,5 +1,4 @@
-require("keymap")
-require("auto_commands.skeleton_java")
+--require("auto_commands.skeleton_java")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

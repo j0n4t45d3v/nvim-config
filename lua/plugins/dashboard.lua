@@ -25,7 +25,7 @@ return {
       [[                                                                       ]],
     }
 
-    local icons = require("icons")
+    local icons = require("core.icons")
 
     -- Botões do Dashboard
     dashboard.section.buttons.val = {

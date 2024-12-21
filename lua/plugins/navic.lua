@@ -1,7 +1,7 @@
 return {
   "SmiteshP/nvim-navic",
   config = function()
-    local icons = require("icons")
+    local icons = require("core.icons")
     require("nvim-navic").setup({
       highlight = false,          -- Realce para os símbolos na winbar
       separator = " > ",          -- Separador entre os símbolos

@@ -49,7 +49,7 @@ return {
                 },
             }
 
-            local icons = require("icons")
+            local icons = require("core.icons")
 
             vim.fn.sign_define("DapBreakpoint", {
                 text = icons.diagnostics.Debug,
