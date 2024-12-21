@@ -8,7 +8,7 @@ return {
       options = {
         themable = true,
         mode = "buffers",
-        separator_style = "thin",
+        separator_style = "slant",
         show_buffer_icons = true,
         numbers = "buffer_id",
         max_name_length = 18,
