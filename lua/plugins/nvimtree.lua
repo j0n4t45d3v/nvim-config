@@ -33,5 +33,10 @@ return {
         dotfiles = false,
       },
     })
+
+    local opt = { noremap = true, silent = true, nowait = true }
+    local api = require("nvim-tree.api")
+    vim.keymap.set("n", "h", api.node.navigate.parent_close, opt)
+    vim.keymap.set("n", "l", api.node.open.edit, opt)
   end,
 }
