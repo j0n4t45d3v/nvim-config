@@ -30,8 +30,7 @@ key.set("n", "<C-up>", "<C-w>+", opt("Increment height window"))
 key.set("n", "<C-dowm>", "<C-w>-", opt("Decrement height window"))
 
 -- NVIM TREE
-key.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { desc = "Open/Close explore", noremap = true, silent = true })
-key.set("n", "<leader>ef", ":NvimTreeFocus<CR>", { desc = "Open explore focus file", noremap = true, silent = true })
+key.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opt("Open/Close explore"))
 
 -- TELESCOPE
 local telescope = require("telescope.builtin")
