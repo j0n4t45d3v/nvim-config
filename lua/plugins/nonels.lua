@@ -10,7 +10,6 @@ return {
         null_ls.builtins.formatting.google_java_format.with({
           timeout = 5000,
         }),
-        null_ls.builtins.diagnostics["sonarlint-language-server"],
       },
     })
   end,
