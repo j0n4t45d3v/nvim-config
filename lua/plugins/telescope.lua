@@ -9,10 +9,18 @@ return {
   config = function()
     local telescope = require("telescope")
     telescope.setup({
+      themes = "dropdowm",
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({})
         },
+        project = {
+          base_dirs = {
+            "~/Documentos/workspace/java",
+            "~/Documentos/workspace/php",
+            "~/Documentos/workspace/golang",
+          }
+        }
       },
     })
     telescope.load_extension("ui-select")
