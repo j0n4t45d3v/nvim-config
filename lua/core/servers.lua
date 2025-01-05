@@ -15,6 +15,7 @@ return {
 		},
 	},
 	phpactor = {},
+	bashls = {},
 	html = {},
 	lua_ls = {
 		settings = {
