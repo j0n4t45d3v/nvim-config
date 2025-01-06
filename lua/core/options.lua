@@ -23,6 +23,7 @@ set.wildoptions = "pum"
 set.termguicolors = true
 set.background = "dark"
 set.colorcolumn = "80"
+set.fillchars = { eob = " " }
 
 vim.loader.enable()
 
