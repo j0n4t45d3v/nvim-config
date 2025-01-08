@@ -24,23 +24,23 @@ key.set("n", "<leader>sq", "<C-w>q", opt("Switch for down window"))
 key.set("n", "<leader>sv", "<C-w>v", opt("Split vertical window"))
 key.set("n", "<leader>ss", "<C-w>s", opt("Split horizontal window"))
 
-key.set("n", "<C-left>", "<C-w><", opt("Decrement width window"))
-key.set("n", "<C-right>", "<C-w>>", opt("Increment width windows"))
-key.set("n", "<C-up>", "<C-w>+", opt("Increment height window"))
-key.set("n", "<C-dowm>", "<C-w>-", opt("Decrement height window"))
+key.set("n", "<M-h>", "<C-w><", opt("Decrement width window"))
+key.set("n", "<M-l>", "<C-w>>", opt("Increment width windows"))
+key.set("n", "<M-k>", "<C-w>+", opt("Increment height window"))
+key.set("n", "<M-j>", "<C-w>-", opt("Decrement height window"))
 
 -- NVIM TREE
 key.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opt("Open/Close explore"))
 
 -- TELESCOPE
-local telescope = require("telescope.builtin")
 
-key.set("n", "<leader>ff", telescope.find_files, { desc = "Find Files" })
-key.set("n", "<leader>fl", telescope.live_grep, { desc = "Telescope live grep" })
-key.set("n", "<leader>fk", telescope.keymaps, { desc = "Telescope show keybinds" })
-key.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
-key.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
-key.set("n", "<leader>fc", telescope.colorscheme, { desc = "List colorschemes" })
+key.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opt("Find Files"))
+key.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opt("Find Recente Files"))
+key.set("n", "<leader>fl", "<cmd>Telescope live_grep<cr>", opt("Telescope live grep"))
+key.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opt("Telescope show keybinds"))
+key.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opt("Telescope buffers"))
+key.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opt("Telescope help tags"))
+key.set("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>", opt("List colorschemes"))
 -- FORMAT
 key.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
 key.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code actions" })
