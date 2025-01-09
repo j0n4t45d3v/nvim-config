@@ -1,12 +1,31 @@
 return {
   "SmiteshP/nvim-navic",
+  dependencies = {
+    {
+      "utilyre/barbecue.nvim",
+      config = function()
+        require("barbecue").setup()
+      end,
+    },
+  },
+  event = "VeryLazy",
   config = function()
     local icons = require("core.icons")
     require("nvim-navic").setup({
-      highlight = false,          -- Realce para os símbolos na winbar
-      separator = " > ",          -- Separador entre os símbolos
-      depth_limit = 0,            -- Número máximo de símbolos exibidos (0 = sem limite)
-      depth_limit_indicator = "...", -- Indicador quando o limite for atingido
+      lsp = {
+        auto_attach = true,
+        preference = nil,
+      },
+      highlight = false,
+      separator = " > ",
+      depth_limit = 0,
+      depth_limit_indicator = "..",
+      safe_output = true,
+      lazy_update_context = false,
+      click = false,
+      format_text = function(text)
+        return text
+      end,
       icons = icons.kind,
     })
   end,
