@@ -15,9 +15,9 @@ return {
                 return vim.g.debug_active == true
               end
               if is_debug_active() then
-                return "Enable"
+                return "On"
               else
-                return "Disable"
+                return "Off"
               end
             end,
             icon = "" .. diagnostic_icons.Debug .. " Debugger:",
