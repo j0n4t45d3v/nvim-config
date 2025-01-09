@@ -32,7 +32,7 @@ return {
           },
           {
             function()
-              local clients = vim.lsp.get_active_clients()
+              local clients = vim.lsp.get_clients()
               if #clients > 0 then
                 return "["
                     .. table.concat(
