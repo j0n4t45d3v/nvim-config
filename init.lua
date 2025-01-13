@@ -5,4 +5,5 @@ require("lazy-config")
 vim.cmd([[
 syntax on
 filetype plugin indent on
+colorscheme material-deep-ocean
 ]])
