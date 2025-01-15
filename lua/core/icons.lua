@@ -127,6 +127,9 @@ return {
         TriangleShortArrowLeft = "",
         TriangleShortArrowRight = "",
         TriangleShortArrowUp = "",
+        Lsp = " ",
+        Disconnect = "",
+        Connect = "󰌘"
     },
     diagnostics = {
         BoldError = "",

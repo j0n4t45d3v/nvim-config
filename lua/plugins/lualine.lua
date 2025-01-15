@@ -4,6 +4,7 @@ return {
   event = "bufwinenter",
   config = function()
     local diagnostic_icons = require("core.icons").diagnostics
+    local ui_icons = require("core.icons").ui
     require("lualine").setup({
       sections = {
         lualine_c = {
@@ -15,12 +16,12 @@ return {
                 return vim.g.debug_active == true
               end
               if is_debug_active() then
-                return "On"
+                return ui_icons.Connect
               else
-                return "Off"
+                return ui_icons.Disconnect
               end
             end,
-            icon = "" .. diagnostic_icons.Debug .. " Debugger:",
+            icon = "" .. ui_icons.Bug .. " Debugger:",
             color = { fg = "#cfcfcf", gui = "bold" }, -- Customize a cor
           },
         },
@@ -46,7 +47,7 @@ return {
                 return "No LSP"
               end
             end,
-            icon = " LSP:",
+            icon = ui_icons.Lsp .. ":",
             color = { fg = "#cfcfcf", gui = "bold" }, -- Customize a cor
           },
           "filetype",
