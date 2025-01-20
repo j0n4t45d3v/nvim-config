@@ -32,6 +32,19 @@ return {
         "stylua",
       })
 
+      local icon_diagnostic = require("core.icons").diagnostics
+
+      local signs = {
+        Error = icon_diagnostic.Error,
+        Warn = icon_diagnostic.Warning,
+        Info = icon_diagnostic.Info,
+        Hint = icon_diagnostic.Hint,
+      }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       local setup_lsp_server = require("core.lsp")
       require("mason-lspconfig").setup({
