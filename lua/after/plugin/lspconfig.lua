@@ -1,31 +1,30 @@
 return {
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-          },
-        },
-      })
-    end,
-  },
-  { "williamboman/mason-lspconfig.nvim" },
-  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "folke/neodev.nvim", opts = {} },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "folke/neodev.nvim",                opts = {} },
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          require("mason").setup({
+            ui = {
+              icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗",
+              },
+            },
+          })
+        end,
+      },
     },
     config = function()
       local lspconfig = require("lspconfig")
       local servers = require("core.servers")
       servers.intelephense.root_dir = lspconfig.util.root_pattern("compose.json", ".git/", "*.php")
-      servers.phpactor.root_dir = lspconfig.util.root_pattern("compose.json", ".git/", "*.php")
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -35,15 +34,23 @@ return {
       local icon_diagnostic = require("core.icons").diagnostics
 
       local signs = {
-        Error = icon_diagnostic.Error,
-        Warn = icon_diagnostic.Warning,
-        Info = icon_diagnostic.Info,
-        Hint = icon_diagnostic.Hint,
+        ERROR = icon_diagnostic.Error,
+        WARN = icon_diagnostic.Warning,
+        INFO = icon_diagnostic.Info,
+        HINT = icon_diagnostic.Hint,
       }
+      local config_lsp_diagnostic = {}
+
       for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        config_lsp_diagnostic[vim.diagnostic.severity[type]] = icon
       end
+
+      vim.diagnostic.config {
+        signs = {
+          active= true,
+          text = config_lsp_diagnostic
+        }
+      }
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       local setup_lsp_server = require("core.lsp")

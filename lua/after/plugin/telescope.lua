@@ -10,7 +10,6 @@ return {
   config = function()
     local telescope = require("telescope")
     telescope.setup({
-      themes = "dropdowm",
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),

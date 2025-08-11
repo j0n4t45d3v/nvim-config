@@ -1,5 +1,4 @@
 local M = {}
-local navic = require("nvim-navic")
 
 local lsp_helpers = function(buffer)
   -- Helper para facilitar os mapeamentos
@@ -67,7 +66,7 @@ end
 
 local attach = function(client, buffer)
   if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, buffer)
+    require("nvim-navic").attach(client, buffer)
   end
   lsp_helpers(buffer)
 end

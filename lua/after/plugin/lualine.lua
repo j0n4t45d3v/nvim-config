@@ -6,6 +6,7 @@ return {
 		local ui_icons = require("core.icons").ui
 		require("lualine").setup({
 			options = {
+        theme = 'tokyonight',
 				disabled_filetypes = {
 					statusline = { "NvimTree" },
 				},

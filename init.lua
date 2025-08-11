@@ -1,9 +1,9 @@
+require("core.keymap").set_keybinds()
 require("core.options")
-require("core.keymap")
 require("lazy-config")
 
 vim.cmd([[
 syntax on
 filetype plugin indent on
-colorscheme material-deep-ocean
+colorscheme lackluster-night
 ]])

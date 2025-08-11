@@ -44,6 +44,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focusable = false })
+  end
+})
+
 -- Set kitty terminal padding to 0 when in nvim
 vim.cmd([[
   augroup kitty_mp

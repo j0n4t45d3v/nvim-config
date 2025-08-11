@@ -14,7 +14,6 @@ return {
 			},
 		},
 	},
-	phpactor = {},
 	bashls = {},
 	html = {},
 	lua_ls = {
@@ -23,6 +22,12 @@ return {
 				completion = {
 					callSnippet = "Replace",
 				},
+        diagnostics = {
+          globals = {
+            'vim',
+            'require'
+          }
+        }
 			},
 		},
 	},

@@ -13,8 +13,8 @@ return {
 				},
 			},
 			view = {
-				width = 30,
-				side = "left",
+				width = 50,
+				side = "right",
 			},
 			renderer = {
 				icons = {

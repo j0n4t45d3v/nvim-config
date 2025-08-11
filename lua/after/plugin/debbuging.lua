@@ -1,6 +1,8 @@
 return {
   {
     "leoluz/nvim-dap-go",
+    event = { "BufReadPre", "BufNewFile" },
+    ft = "go",
     config = function()
       require("dap-go").setup()
     end,
@@ -12,6 +14,7 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
     },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -69,6 +72,7 @@ return {
         linehl = "Visual",
         numhl = "DiagnosticSignWarn",
       })
+
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
@@ -82,27 +86,20 @@ return {
         dapui.close()
       end
 
-      local key = vim.keymap
+      local status_ok, keybind = pcall(require, "core.keymap")
+      if not status_ok then
+        vim.notify("KeyBind", "Falha ao importar as keybinds!")
+        return
+      end
 
-      key.set("n", "<F5>", function()
-        require("dap").continue()
-      end, { desc = "Start/Continue debugging" })
+      local key = keybind.key
+      local opt = keybind.opt
 
-      key.set("n", "<F8>", function()
-        require("dap").step_over()
-      end, { desc = "Step Over" })
-
-      key.set("n", "<F7>", function()
-        require("dap").step_into()
-      end, { desc = "Step Over" })
-
-      key.set("n", "<leader>dt", function()
-        require("dap").toggle_breakpoint()
-      end, { desc = "Toggle breakpoint" })
-
-      key.set("n", "<leader>dc", function()
-        require("dapui").toggle()
-      end, { desc = "toggle dap ui" })
+      key.set("n", "<F5>", dap.continue, opt("Start/Continue debugging"))
+      key.set("n", "<F8>", dap.step_over, opt("Step Over"))
+      key.set("n", "<F7>", dap.step_into, opt("Step Over"))
+      key.set("n", "<leader>dt", dap.toggle_breakpoint, opt("Toggle breakpoint"))
+      key.set("n", "<leader>dc", dapui.toggle, opt("toggle dap ui"))
     end,
   },
 }

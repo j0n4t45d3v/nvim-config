@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   build = ":TSUpdate",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup({
@@ -28,14 +29,14 @@ return {
         },
         move = {
           enable = true,
-          set_jumps = true,       -- Adiciona os movimentos ao jumplist
+          set_jumps = true,             -- Adiciona os movimentos ao jumplist
           goto_next_start = {
             ["]m"] = "@function.outer", -- Próximo início de função
-            ["]c"] = "@class.outer", -- Próximo início de classe
+            ["]c"] = "@class.outer",    -- Próximo início de classe
           },
           goto_previous_start = {
             ["[m"] = "@function.outer", -- Função anterior
-            ["[c"] = "@class.outer", -- Classe anterior
+            ["[c"] = "@class.outer",    -- Classe anterior
           },
         },
       },
