@@ -21,10 +21,11 @@ return {
       require("dapui").setup()
       require("nvim-dap-virtual-text").setup({})
 
+      local home = os.getenv("HOME")
       dap.adapters.cppdbg = {
         id = "cppdbg",
         type = "executable",
-        command = "/home/jonatasroot/Documentos/dap/extension/debugAdapters/bin/OpenDebugAD7",
+        command = home .. "/Documentos/dap/extension/debugAdapters/bin/OpenDebugAD7",
       }
 
       dap.configurations.cpp = {
