@@ -1,7 +1,6 @@
 return {
   "mfussenegger/nvim-jdtls",
   ft = { "java" },
-  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local status, jdtls = pcall(require, "jdtls")
     if not status then
