@@ -5,7 +5,8 @@ return {
     dependencies = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "williamboman/mason-lspconfig.nvim" },
-      { "folke/neodev.nvim",                opts = {} },
+      { "folke/neodev.nvim", opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
       {
         "williamboman/mason.nvim",
         config = function()
