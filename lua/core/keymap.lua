@@ -61,6 +61,7 @@ function M.set_keybinds()
   key.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opt("Open/Close explore"))
 
   -- FORMAT
+  key.set("n", "<leader>lr", vim.lsp.buf.rename, opt("[L]sp [R]ename"))
   key.set("n", "<leader>lf", vim.lsp.buf.format, opt("Format code"))
   key.set("n", "<leader>la", vim.lsp.buf.code_action, opt("Code actions"))
   key.set("n", "<leader>ld", "<cmd>Telescope diagnostics theme=ivy<cr>", opt("Show Diagnostics"))
